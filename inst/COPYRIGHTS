@@ -1,0 +1,40 @@
+Overall license:
+================
+
+All package files are released under the GNU General Public License version 2.
+
+The uchardet package based on the original uchardet software by Mozilla (https://gitlab.freedesktop.org/uchardet/uchardet). Local version is situated in the src/uchardet folder.
+
+
+Details:
+========
+
+Files: *
+Copyright: (c) 2019 Artem Klevtsov
+License: GPL-2
+Original Location: https://gitlab.com/artemklevtsov/uchardet
+
+Files: src/uchardet/*
+Copyright: (c) 2001 Netscape Communications Corporation, Carbo Kuo <byvoid.kcp@gmail.com>.
+License: MPL-1.1
+Original Location: https://gitlab.freedesktop.org/uchardet/uchardet
+
+File: src/uchardet/src/LangModels/LangHebrewModel.cpp
+Copyright: (c) 2005 Simon Montagu <smontagu@smontagu.org>
+License: MPL-1.1
+Original Location: https://gitlab.freedesktop.org/uchardet/uchardet/blob/master/src/LangModels/LangHebrewModel.cpp
+
+File: src/uchardet/src/nsHebrewProber.cpp
+Copyright: (c) 2005 Shy Shalom <shooshX@gmail.com>
+License: MPL-1.1
+Original Location: https://gitlab.freedesktop.org/uchardet/uchardet/blob/master/src/nsHebrewProber.cpp
+
+File: src/uchardet/src/nsHebrewProber.h
+Copyright: (c) 2005 Shy Shalom <shooshX@gmail.com>
+License: MPL-1.1
+Original Location: https://gitlab.freedesktop.org/uchardet/uchardet/blob/master/src/nsHebrewProber.h
+
+File: inst/include/uchardet/uchardet.h
+Copyright: (c) 2001 Netscape Communications Corporation.
+License: MPL-1.1
+Original Location: https://gitlab.freedesktop.org/uchardet/uchardet/blob/master/src/uchardet.h

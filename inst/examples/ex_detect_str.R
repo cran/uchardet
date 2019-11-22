@@ -1,0 +1,32 @@
+# detect character vector with ASCII strings
+ascii <- "I can eat glass and it doesn't hurt me."
+detect_str_enc(ascii)
+
+# detect character vector with UTF-8 strings
+utf8 <- "\u4e0b\u5348\u597d"
+print(utf8)
+detect_str_enc(utf8)
+
+# function to read ASCII or UTF-8 files
+read_file <- function(x) readChar(x, file.size(x))
+# path to examples
+ex_path <- system.file("examples", package = "uchardet")
+
+# russian text
+ru_utf8 <- read_file(file.path(ex_path, "ru.txt"))
+print(ru_utf8)
+detect_str_enc(iconv(ru_utf8, "utf8", "ibm866"))
+detect_str_enc(iconv(ru_utf8, "utf8", "koi8-r"))
+detect_str_enc(iconv(ru_utf8, "utf8", "cp1251"))
+
+# china text
+zh_utf8 <- read_file(file.path(ex_path, "zh.txt"))
+print(zh_utf8)
+detect_str_enc(iconv(zh_utf8, "utf8", "big5"))
+detect_str_enc(iconv(zh_utf8, "utf8", "gb18030"))
+
+# korean text
+ko_utf8 <- read_file(file.path(ex_path, "ko.txt"))
+print(ko_utf8)
+detect_str_enc(iconv(ko_utf8, "utf8", "uhc"))
+detect_str_enc(iconv(ko_utf8, "utf8", "iso-2022-kr"))

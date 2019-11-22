@@ -1,0 +1,37 @@
+# detect raw vector encoding with ASCII encoding
+ascii <- "I can eat glass and it doesn't hurt me."
+detect_raw_enc(charToRaw(ascii))
+
+# detect raw vector with UTF-8 encoding
+utf8 <- "\u4e0b\u5348\u597d"
+detect_raw_enc(charToRaw(utf8))
+
+# function to read file as raw bytes
+read_bin <- function(x) readBin(x, raw(), file.size(x))
+
+# detect encoding of files read as raw vector
+ex_path <- system.file("examples", package = "uchardet")
+
+# deutsch text as binary data
+de_bin <- read_bin(file.path(ex_path, "de", "windows-1252.txt"))
+detect_raw_enc(de_bin)
+
+# russian text as binary data
+ru_bin <- read_bin(file.path(ex_path, "ru", "windows-1251.txt"))
+detect_raw_enc(ru_bin)
+
+# china text as binary data
+zh_bin <- read_bin(file.path(ex_path, "zh", "utf-8.txt"))
+detect_raw_enc(zh_bin)
+
+# detect encoding of the web pages content
+\donttest{
+if (require("curl")) {
+  fetch_url <- function(u) curl_fetch_memory(u)$content
+  detect_raw_enc(fetch_url("https://www.corriere.it"))
+  detect_raw_enc(fetch_url("https://www.vk.com"))
+  detect_raw_enc(fetch_url("https://www.qq.com"))
+  detect_raw_enc(fetch_url("https://kakaku.com"))
+  detect_raw_enc(fetch_url("https://www.incruit.com/"))
+}
+}
