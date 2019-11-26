@@ -1,3 +1,8 @@
+# uchardet 1.0.1
+
+* Fix global-buffer-overflow error in upstream library;
+* Minor refoctor the skip tests logic;
+
 # uchardet 1.0.0
 
 * Refactor C++ code;

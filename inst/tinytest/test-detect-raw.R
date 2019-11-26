@@ -13,8 +13,8 @@ x <- as.raw(sample(0:255, 50))
 expect_equal(detect_raw_enc(x), NA_character_)
 expect_warning(detect_raw_enc(x), "Can not handling data.")
 
-if (win_i386) {
-  exit_file("Skip tests on Windows i386")
+if (skip_os()) {
+  exit_file("Skip tests on current OS")
 }
 
 for (i in seq_along(ex_files)) {

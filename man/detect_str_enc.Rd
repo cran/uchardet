@@ -23,7 +23,7 @@ ascii <- "I can eat glass and it doesn't hurt me."
 detect_str_enc(ascii)
 
 # detect character vector with UTF-8 strings
-utf8 <- "\\u4e0b\\u5348\\u597d"
+utf8 <- "\u4e0b\u5348\u597d"
 print(utf8)
 detect_str_enc(utf8)
 

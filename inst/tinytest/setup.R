@@ -1,9 +1,6 @@
 # random seed
 set.seed(0)
 
-# detect windows i386
-win_i386 <- .Platform$OS.type == "windows" && .Platform$r_arch == "i386"
-
 # list of examples files
 ex_path <- system.file("examples", package = "uchardet")
 ex_files <- Sys.glob(file.path(ex_path, "*", "*"))
@@ -16,11 +13,28 @@ to_skip <- c(
   "ja/utf-16be.txt",
   "ja/utf-16le.txt"
 )
-to_skip <- file.path(ex_path, to_skip)
-ex_files <- setdiff(ex_files, to_skip)
+ex_files <- setdiff(ex_files, file.path(ex_path, to_skip))
 
 # encodings based on files names
 ex_encs <- toupper(tools::file_path_sans_ext(basename(ex_files)))
+
+# skip some encodings
+skip_enc <- function(enc) {
+  # skip if encoding not in iconvlist
+  supported <- (enc %in% iconvlist())
+  # skip if encoding is UTF-16 or UTF-32 (can not be converted)
+  except <- any(startsWith(enc, c("UTF-16", "UTF-32")))
+  !supported || except
+}
+
+# skip test on OS
+skip_os <- function() {
+  # detect windows i386
+  win_i386 <- .Platform$OS.type == "windows" && .Platform$r_arch == "i386"
+  # detect solaris
+  sunos <- Sys.info()[["sysname"]] == "Solaris"
+  win_i386 || sunos
+}
 
 # read file to raw vector
 read_bin <- function(x) {

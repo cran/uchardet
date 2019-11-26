@@ -16,8 +16,8 @@ expect_equivalent(detect_file_enc(tmp), NA_character_)
 expect_warning(detect_file_enc(tmp), "Can not handling file")
 unlink(tmp)
 
-if (win_i386) {
-  exit_file("Skip tests on Windows i386")
+if (skip_os()) {
+  exit_file("Skip tests on current OS")
 }
 
 res <- detect_file_enc(ex_files)

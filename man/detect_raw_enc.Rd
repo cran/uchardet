@@ -22,7 +22,7 @@ ascii <- "I can eat glass and it doesn't hurt me."
 detect_raw_enc(charToRaw(ascii))
 
 # detect raw vector with UTF-8 encoding
-utf8 <- "\\u4e0b\\u5348\\u597d"
+utf8 <- "\u4e0b\u5348\u597d"
 detect_raw_enc(charToRaw(utf8))
 
 # function to read file as raw bytes

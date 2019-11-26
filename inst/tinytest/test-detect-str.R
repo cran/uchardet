@@ -20,17 +20,8 @@ x <- rawToChar(as.raw(sample(0:255, 50)))
 expect_equal(detect_str_enc(x), NA_character_)
 expect_warning(detect_str_enc(x), "Can not handling string")
 
-if (win_i386) {
-  exit_file("Skip tests on Windows i386")
-}
-
-# skip some encodings
-skip_enc <- function(enc) {
-  # skip if encoding not in iconvlist
-  supported <- (enc %in% iconvlist())
-  # skip if encoding is UTF-16 or UTF-32 (can not be converted)
-  except <- any(startsWith(enc, c("UTF-16", "UTF-32")))
-  !supported || except
+if (skip_os()) {
+  exit_file("Skip tests on current OS")
 }
 
 for (i in seq_along(ex_files)) {
