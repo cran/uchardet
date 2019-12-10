@@ -19,7 +19,7 @@ using namespace Rcpp;
 //'
 //' @encoding UTF-8
 //'
-//' @example inst/examples/ex_detect_raw.R
+//' @example man-roxygen/ex_detect_raw.R
 //'
 // [[Rcpp::export(rng = false)]]
 String detect_raw_enc(const RawVector& x) {

@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![GitLab CI Build
-Status](https://gitlab.com/artemklevtsov/uchardet/badges/master/build.svg)](https://gitlab.com/artemklevtsov/uchardet/pipelines)
+Status](https://gitlab.com/artemklevtsov/uchardet/badges/master/pipeline.svg)](https://gitlab.com/artemklevtsov/uchardet/pipelines)
 [![AppVeyor Build
 status](https://ci.appveyor.com/api/projects/status/46wct6f93lik6aie?svg=true)](https://ci.appveyor.com/project/artemklevtsov/uchardet)
 [![Codecov Code
@@ -43,7 +43,7 @@ Also you could install the dev-version with the `install_gitlab()`
 function from the `remotes` package:
 
 ``` r
-remotes::install_gitlab("artemklevtsov/uchardet")
+remotes::install_gitlab("artemklevtsov/uchardet@devel")
 ```
 
 This package contains the compiled code, therefore you have to use the
@@ -89,12 +89,12 @@ detect_raw_enc(charToRaw(utf8))
 ascii_file <- tempfile()
 writeLines(ascii, ascii_file)
 detect_file_enc(ascii_file)
-#> /tmp/RtmpWlvbrE/file4c0437ce292c 
+#> /tmp/Rtmpft7RBl/file625e2e4efaf3 
 #>                          "ASCII"
 utf8_file <- tempfile()
 writeLines(utf8, utf8_file)
 detect_file_enc(utf8_file)
-#> /tmp/RtmpWlvbrE/file4c0460446f96 
+#> /tmp/Rtmpft7RBl/file625e5aae6475 
 #>                          "UTF-8"
 ```
 

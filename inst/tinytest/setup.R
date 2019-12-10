@@ -32,7 +32,7 @@ skip_os <- function() {
   # detect windows i386
   win_i386 <- .Platform$OS.type == "windows" && .Platform$r_arch == "i386"
   # detect solaris
-  sunos <- Sys.info()[["sysname"]] == "Solaris"
+  sunos <- Sys.info()[["sysname"]] == "SunOS"
   win_i386 || sunos
 }
 

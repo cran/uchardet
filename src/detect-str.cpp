@@ -38,7 +38,7 @@ String str_detect_enc(const std::string& s, uchardet_t& handle) {
 //'
 //' @encoding UTF-8
 //'
-//' @example inst/examples/ex_detect_str.R
+//' @example man-roxygen/ex_detect_str.R
 //'
 //' @export
 //'

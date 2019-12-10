@@ -1,14 +1,19 @@
+# ucharder 1.0.2
+
+* Fix tests on Solaris.
+* Small fixes in documentation.
+
 # uchardet 1.0.1
 
-* Fix global-buffer-overflow error in upstream library;
-* Minor refoctor the skip tests logic;
+* Fix global-buffer-overflow error in upstream library.
+* Minor refoctor the skip tests logic.
 
 # uchardet 1.0.0
 
-* Refactor C++ code;
-* Expose C++ functions;
-* Add vignette;
-* Add tests;
+* Refactor C++ code.
+* Expose C++ functions.
+* Add vignette.
+* Add tests.
 
 # uchardet 0.1.0
 

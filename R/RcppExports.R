@@ -16,7 +16,7 @@
 #'
 #' @encoding UTF-8
 #'
-#' @example inst/examples/ex_detect_file.R
+#' @example man-roxygen/ex_detect_file.R
 #'
 detect_file_enc <- function(x) {
     .Call(`_uchardet_detect_file_enc`, x)
@@ -36,7 +36,7 @@ detect_file_enc <- function(x) {
 #'
 #' @encoding UTF-8
 #'
-#' @example inst/examples/ex_detect_raw.R
+#' @example man-roxygen/ex_detect_raw.R
 #'
 detect_raw_enc <- function(x) {
     .Call(`_uchardet_detect_raw_enc`, x)
@@ -55,7 +55,7 @@ detect_raw_enc <- function(x) {
 #'
 #' @encoding UTF-8
 #'
-#' @example inst/examples/ex_detect_str.R
+#' @example man-roxygen/ex_detect_str.R
 #'
 #' @export
 #'

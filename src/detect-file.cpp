@@ -49,7 +49,7 @@ String file_detect_enc(const char* fname, uchardet_t& handle) {
 //'
 //' @encoding UTF-8
 //'
-//' @example inst/examples/ex_detect_file.R
+//' @example man-roxygen/ex_detect_file.R
 //'
 // [[Rcpp::export(rng = false)]]
 StringVector detect_file_enc(const StringVector& x) {
