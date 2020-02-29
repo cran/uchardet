@@ -20,6 +20,7 @@ Returned encoding names are iconv-compatible.
 Useful links:
 \itemize{
   \item \url{https://artemklevtsov.gitlab.io/uchardet}
+  \item \url{https://gitlab.com/artemklevtsov}
   \item Report bugs at \url{https://gitlab.com/artemklevtsov/uchardet/issues}
 }
 

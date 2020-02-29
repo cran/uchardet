@@ -7,14 +7,10 @@ using namespace Rcpp;
 #define BUFFER_SIZE 65536
 char buffer[BUFFER_SIZE];
 
-template <typename T>
-bool inline str_is_empty(const T& x) {
-  return x.empty() || x.get() == NA_STRING;
-}
-
-String file_detect_enc(const char* fname, uchardet_t& handle) {
+String file_detect_enc(const char* fname, uchardet_t handle) {
   std::ifstream fs(R_ExpandFileName(fname), std::ios::binary);
   if (!fs.is_open()) {
+    warning("Can not open file '%s'.", fname);
     return NA_STRING;
   }
   while(!fs.eof()) {
@@ -26,7 +22,7 @@ String file_detect_enc(const char* fname, uchardet_t& handle) {
   fs.close();
   std::string res = uchardet_get_charset(handle);
   if (res.empty()) {
-    warning("Can not handling file '%s'.", fname);
+    warning("Can not detect encoding.");
     return NA_STRING;
   }
   return wrap(res);
@@ -52,12 +48,16 @@ String file_detect_enc(const char* fname, uchardet_t& handle) {
 //' @example man-roxygen/ex_detect_file.R
 //'
 // [[Rcpp::export(rng = false)]]
-StringVector detect_file_enc(const StringVector& x) {
+StringVector detect_file_enc(StringVector x) {
   size_t n = x.size();
   StringVector res = no_init(n);
   uchardet_t handle = uchardet_new();
   for (size_t i = 0; i < n; ++i) {
-    res[i] = str_is_empty(x[i]) ? NA_STRING : file_detect_enc(x[i], handle);
+    if (StringVector::is_na(x[i]) || x[i].empty()) {
+      res[i] = NA_STRING;
+      continue;
+    }
+    res[i] = file_detect_enc(x[i], handle);
     uchardet_reset(handle);
   }
   uchardet_delete(handle);

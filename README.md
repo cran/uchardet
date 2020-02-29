@@ -30,6 +30,7 @@ Key features:
   - process character vector;
   - process raw vector;
   - process files without load whole file to memory;
+  - process contents of a URLs;
 
 ## Installation
 
@@ -89,13 +90,18 @@ detect_raw_enc(charToRaw(utf8))
 ascii_file <- tempfile()
 writeLines(ascii, ascii_file)
 detect_file_enc(ascii_file)
-#> /tmp/Rtmpft7RBl/file625e2e4efaf3 
+#> /tmp/Rtmp9uhkaX/file131a598ce4d4 
 #>                          "ASCII"
 utf8_file <- tempfile()
 writeLines(utf8, utf8_file)
 detect_file_enc(utf8_file)
-#> /tmp/Rtmpft7RBl/file625e5aae6475 
+#> /tmp/Rtmp9uhkaX/file131a4c730707 
 #>                          "UTF-8"
+
+# detect URL contents encoding
+detect_url_enc(c("https://www.w3.org/", "https://zh.wikipedia.org/"))
+#>       https://www.w3.org/ https://zh.wikipedia.org/ 
+#>                   "ASCII"                   "UTF-8"
 ```
 
 ## Bug reports

@@ -1,3 +1,11 @@
+# uchardet 1.0.4
+
+* Update documentation.
+
+# ucharder 1.0.3
+
+* SUse builtin uchardet library for the reproducible results.
+
 # ucharder 1.0.2
 
 * Fix tests on Solaris.

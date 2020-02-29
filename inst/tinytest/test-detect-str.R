@@ -1,5 +1,3 @@
-library(tinytest)
-
 source("setup.R")
 
 x <- detect_str_enc(letters)
@@ -18,7 +16,7 @@ expect_equal(detect_str_enc(x), "UTF-8")
 
 x <- rawToChar(as.raw(sample(0:255, 50)))
 expect_equal(detect_str_enc(x), NA_character_)
-expect_warning(detect_str_enc(x), "Can not handling string")
+expect_warning(detect_str_enc(x), "Can not detect encoding.")
 
 if (skip_os()) {
   exit_file("Skip tests on current OS")

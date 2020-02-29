@@ -22,7 +22,7 @@ using namespace Rcpp;
 //' @example man-roxygen/ex_detect_raw.R
 //'
 // [[Rcpp::export(rng = false)]]
-String detect_raw_enc(const RawVector& x) {
+String detect_raw_enc(RawVector x) {
   std::size_t n = x.size();
   if (n == 0) {
     return NA_STRING;
@@ -37,12 +37,10 @@ String detect_raw_enc(const RawVector& x) {
     return NA_STRING;
   }
   std::string res = uchardet_get_charset(handle);
+  uchardet_delete(handle);
   if (res.empty()) {
-    uchardet_delete(handle);
-    warning("Can not handling data.");
+    warning("Can not detect encoding.");
     return NA_STRING;
   }
-
-  uchardet_delete(handle);
   return wrap(res);
 }

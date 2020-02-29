@@ -24,11 +24,11 @@ namespace uchardet {
         }
     }
 
-    inline StringVector detect_file_enc(const StringVector& x) {
+    inline StringVector detect_file_enc(StringVector x) {
         typedef SEXP(*Ptr_detect_file_enc)(SEXP);
         static Ptr_detect_file_enc p_detect_file_enc = NULL;
         if (p_detect_file_enc == NULL) {
-            validateSignature("StringVector(*detect_file_enc)(const StringVector&)");
+            validateSignature("StringVector(*detect_file_enc)(StringVector)");
             p_detect_file_enc = (Ptr_detect_file_enc)R_GetCCallable("uchardet", "_uchardet_detect_file_enc");
         }
         RObject rcpp_result_gen;
@@ -44,11 +44,11 @@ namespace uchardet {
         return Rcpp::as<StringVector >(rcpp_result_gen);
     }
 
-    inline String detect_raw_enc(const RawVector& x) {
+    inline String detect_raw_enc(RawVector x) {
         typedef SEXP(*Ptr_detect_raw_enc)(SEXP);
         static Ptr_detect_raw_enc p_detect_raw_enc = NULL;
         if (p_detect_raw_enc == NULL) {
-            validateSignature("String(*detect_raw_enc)(const RawVector&)");
+            validateSignature("String(*detect_raw_enc)(RawVector)");
             p_detect_raw_enc = (Ptr_detect_raw_enc)R_GetCCallable("uchardet", "_uchardet_detect_raw_enc");
         }
         RObject rcpp_result_gen;
@@ -64,11 +64,11 @@ namespace uchardet {
         return Rcpp::as<String >(rcpp_result_gen);
     }
 
-    inline StringVector detect_str_enc(const StringVector& x) {
+    inline StringVector detect_str_enc(StringVector x) {
         typedef SEXP(*Ptr_detect_str_enc)(SEXP);
         static Ptr_detect_str_enc p_detect_str_enc = NULL;
         if (p_detect_str_enc == NULL) {
-            validateSignature("StringVector(*detect_str_enc)(const StringVector&)");
+            validateSignature("StringVector(*detect_str_enc)(StringVector)");
             p_detect_str_enc = (Ptr_detect_str_enc)R_GetCCallable("uchardet", "_uchardet_detect_str_enc");
         }
         RObject rcpp_result_gen;

@@ -32,7 +32,7 @@ system.file("examples", path, package = "uchardet")
 
 ## Character encoding detection
 
-To detect encoding of the strings you should use `detect_str_enc` function. It is vectorized and accepts the character vector. Missing values will be skipped. Also function keeps `names` attribute.
+To detect encoding of the strings you should use `detect_str_enc()` function. It is vectorized and accepts the character vector. Missing values will be skipped. Also function keeps `names` attribute.
 
 Simple example. Detection of the ASII symbols:
 
@@ -83,7 +83,7 @@ Encoding(c(zh_utf8, zh_big5, zh_gb))
 
 ## Raw bytes encoding detection
 
-Sometimes file can't be read as a string, for example, when it includes embedded nul (`\000`). In such cases it would be right to read the file as raw byte vector and detect encoding with `detect_raw_enc` function.
+Sometimes file can't be read as a string, for example, when it includes embedded nul (`\000`). In such cases it would be right to read the file as raw byte vector and detect encoding with `detect_raw_enc()` function.
 
 Let's define the function for reading demo files as raw bytes vector:
 
@@ -114,27 +114,13 @@ detect_raw_enc(read_bin("fr/utf-16.be"))
 detect_raw_enc(read_bin("zh/big5.txt"))
 ```
 
-Also `detect_raw_enc` can be used with `curl`:
-
-```{r}
-library(curl)
-# fetch page content as raw vector
-cnt <- curl_fetch_memory("http://www.ppomppu.co.kr")$content
-# detect page encoding
-enc <- detect_raw_enc(cnt)
-# convert encoding to UTF-8
-cnt <- iconv(readBin(cnt, character()), enc, "UTF-8")
-```
-
-We used the `readBin(cnt, character())` instead `rawToChar(cnt)` because the `rawToChar()` function may raise an errors with some encodings.
-
 ## Files encoding detection
 
-Function `detect_file_enc` will be helpful for detection files encoding without importing these files into the working environment. `detect_file_enc` uses the sliding window with the 65536 bytes width, in result there is no need to import the entire file.
+Function `detect_file_enc()` will be helpful for detection files encoding without importing these files into the working environment. `detect_file_enc()` uses the sliding window with the 65536 bytes width, in result there is no need to import the entire file.
 
 Function is vectorized and accepts the character vector of file paths. Non existing files will be skipped and names of the files will be attached to output vector as `names` attribute.
 
-```{r}
+```{r warning = FALSE}
 # paths to examples files
 ex_path <- system.file("examples", package = "uchardet")
 ex_files <- Sys.glob(file.path(ex_path, "*", "*"))

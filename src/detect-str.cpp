@@ -3,13 +3,8 @@
 
 using namespace Rcpp;
 
-template <typename T>
-bool inline str_is_empty(const T& x) {
-  return x.empty() || x.get() == NA_STRING;
-}
-
-String str_detect_enc(const std::string& s, uchardet_t& handle) {
-  int retval = uchardet_handle_data(handle, s.data(), s.size());
+String str_detect_enc(const std::string& x, uchardet_t handle) {
+  int retval = uchardet_handle_data(handle, x.data(), x.size());
   uchardet_data_end(handle);
   if (retval != 0) {
     warning("Can not handling string.");
@@ -17,7 +12,7 @@ String str_detect_enc(const std::string& s, uchardet_t& handle) {
   }
   std::string res = uchardet_get_charset(handle);
   if (res.empty()) {
-    warning("Can not handling string.");
+    warning("Can not detect encoding.");
     return NA_STRING;
   }
   return wrap(res);
@@ -43,12 +38,16 @@ String str_detect_enc(const std::string& s, uchardet_t& handle) {
 //' @export
 //'
 // [[Rcpp::export(rng = false)]]
-StringVector detect_str_enc(const StringVector& x) {
+StringVector detect_str_enc(StringVector x) {
   std::size_t n = x.size();
   StringVector res = no_init(n);
   uchardet_t handle = uchardet_new();
   for (std::size_t i = 0; i < n; ++i) {
-    res[i] = str_is_empty(x[i]) ? NA_STRING : str_detect_enc(std::string(x[i]), handle);
+    if (StringVector::is_na(x[i]) || x[i].empty()) {
+      res[i] = NA_STRING;
+      continue;
+    }
+    res[i] = str_detect_enc(std::string(x[i]), handle);
     uchardet_reset(handle);
   }
   uchardet_delete(handle);

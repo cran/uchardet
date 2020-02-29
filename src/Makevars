@@ -1,0 +1,22 @@
+UCHARDET_DIR = uchardet/src
+UCHARDET_SRC = $(wildcard $(UCHARDET_DIR)/*.cpp $(UCHARDET_DIR)/LangModels/*.cpp)
+UCHARDET_OBJ = $(UCHARDET_SRC:.cpp=.o)
+UCHARDET_LIB = $(UCHARDET_DIR)/libuchardet.a
+
+CXX_STD = CXX11
+
+PKG_CPPFLAGS = -I"$(UCHARDET_DIR)"
+PKG_LIBS = $(UCHARDET_LIB) -Wl,-S
+
+$(SHLIB): $(UCHARDET_LIB)
+
+$(UCHARDET_OBJ): %.o : %.cpp
+	$(CXX) $(CXXFLAGS) $(CXXPICFLAGS) -I"$(UCHARDET_DIR)" -c $< -o $@
+
+$(UCHARDET_LIB): $(UCHARDET_OBJ)
+	$(AR) crs $@ $?
+	$(RANLIB) $@
+
+clean:
+	rm -f $(SHLIB) $(OBJECTS)
+	rm -f $(UCHARDET_OBJ) $(UCHARDET_LIB)

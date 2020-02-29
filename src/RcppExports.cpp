@@ -9,11 +9,11 @@
 using namespace Rcpp;
 
 // detect_file_enc
-StringVector detect_file_enc(const StringVector& x);
+StringVector detect_file_enc(StringVector x);
 static SEXP _uchardet_detect_file_enc_try(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
-    Rcpp::traits::input_parameter< const StringVector& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< StringVector >::type x(xSEXP);
     rcpp_result_gen = Rcpp::wrap(detect_file_enc(x));
     return rcpp_result_gen;
 END_RCPP_RETURN_ERROR
@@ -42,11 +42,11 @@ RcppExport SEXP _uchardet_detect_file_enc(SEXP xSEXP) {
     return rcpp_result_gen;
 }
 // detect_raw_enc
-String detect_raw_enc(const RawVector& x);
+String detect_raw_enc(RawVector x);
 static SEXP _uchardet_detect_raw_enc_try(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
-    Rcpp::traits::input_parameter< const RawVector& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< RawVector >::type x(xSEXP);
     rcpp_result_gen = Rcpp::wrap(detect_raw_enc(x));
     return rcpp_result_gen;
 END_RCPP_RETURN_ERROR
@@ -75,11 +75,11 @@ RcppExport SEXP _uchardet_detect_raw_enc(SEXP xSEXP) {
     return rcpp_result_gen;
 }
 // detect_str_enc
-StringVector detect_str_enc(const StringVector& x);
+StringVector detect_str_enc(StringVector x);
 static SEXP _uchardet_detect_str_enc_try(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
-    Rcpp::traits::input_parameter< const StringVector& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< StringVector >::type x(xSEXP);
     rcpp_result_gen = Rcpp::wrap(detect_str_enc(x));
     return rcpp_result_gen;
 END_RCPP_RETURN_ERROR
@@ -112,9 +112,9 @@ RcppExport SEXP _uchardet_detect_str_enc(SEXP xSEXP) {
 static int _uchardet_RcppExport_validate(const char* sig) { 
     static std::set<std::string> signatures;
     if (signatures.empty()) {
-        signatures.insert("StringVector(*detect_file_enc)(const StringVector&)");
-        signatures.insert("String(*detect_raw_enc)(const RawVector&)");
-        signatures.insert("StringVector(*detect_str_enc)(const StringVector&)");
+        signatures.insert("StringVector(*detect_file_enc)(StringVector)");
+        signatures.insert("String(*detect_raw_enc)(RawVector)");
+        signatures.insert("StringVector(*detect_str_enc)(StringVector)");
     }
     return signatures.find(sig) != signatures.end();
 }

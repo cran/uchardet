@@ -1,5 +1,3 @@
-library(tinytest)
-
 source("setup.R")
 
 expect_error(detect_file_enc(NULL))
@@ -13,7 +11,7 @@ tmp <- tempfile()
 x <- as.raw(sample(0:255, 50))
 writeBin(x, tmp)
 expect_equivalent(detect_file_enc(tmp), NA_character_)
-expect_warning(detect_file_enc(tmp), "Can not handling file")
+expect_warning(detect_file_enc(tmp), "Can not detect encoding.")
 unlink(tmp)
 
 if (skip_os()) {

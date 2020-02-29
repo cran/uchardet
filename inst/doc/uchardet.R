@@ -62,16 +62,7 @@ detect_raw_enc(read_bin("de/windows-1252.txt"))
 detect_raw_enc(read_bin("fr/utf-16.be"))
 detect_raw_enc(read_bin("zh/big5.txt"))
 
-## -----------------------------------------------------------------------------
-library(curl)
-# fetch page content as raw vector
-cnt <- curl_fetch_memory("http://www.ppomppu.co.kr")$content
-# detect page encoding
-enc <- detect_raw_enc(cnt)
-# convert encoding to UTF-8
-cnt <- iconv(readBin(cnt, character()), enc, "UTF-8")
-
-## -----------------------------------------------------------------------------
+## ----warning = FALSE----------------------------------------------------------
 # paths to examples files
 ex_path <- system.file("examples", package = "uchardet")
 ex_files <- Sys.glob(file.path(ex_path, "*", "*"))
