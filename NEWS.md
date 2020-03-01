@@ -1,3 +1,7 @@
+# uchardet 1.0.5
+
+* Fix linker flags wihch cause a error on the Solaris.
+
 # uchardet 1.0.4
 
 * Update documentation.

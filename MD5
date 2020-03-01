@@ -1,7 +1,7 @@
-dd613d3971620a64c9213dee5cbc913c *DESCRIPTION
+be387556802a229c218f74f423f92931 *DESCRIPTION
 7efee4207dcb9970bc5a9eba2fafe287 *LICENSE.note
 31ffac172300a7750d956f08d6a0867d *NAMESPACE
-e0b033055ac05ff8b229d31431b1648e *NEWS.md
+f1cb55dc26586e42a22ea65864067806 *NEWS.md
 f5ab2064112161ec5e2cddd4ea7e87ec *R/RcppExports.R
 cf68a75d6cb3554f514a665e92f1cc8a *R/uchardet-package.R
 e84771a1cf6a77d30882c8d5b0685c3b *README.md
@@ -144,7 +144,7 @@ a9d54d3f5ee108b9eb5f2f84776be74b *man/detect_file_enc.Rd
 fe8363876d59a16fd50571370e72f0ff *man/detect_raw_enc.Rd
 ebfdbd7f537ef4f61d65aebdd3d7e81a *man/detect_str_enc.Rd
 934ba2b13bd66dbda6cc29ea9e6fb2f6 *man/uchardet.Rd
-45248679331ce2aab557fb039d8e6da1 *src/Makevars
+05a611437009f3641611c4a8ad710133 *src/Makevars
 6b755925151b544c3662aeadfc3534e5 *src/RcppExports.cpp
 86c52b30566229eb43bde21511a5588b *src/detect-file.cpp
 bc08fd4111f1e3228f31c4c0022c4799 *src/detect-raw.cpp
