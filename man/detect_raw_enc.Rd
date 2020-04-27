@@ -46,12 +46,12 @@ detect_raw_enc(zh_bin)
 # detect encoding of the web pages content
 \donttest{
 if (require("curl")) {
-  detect_url_enc <- function(u) detect_url_enc(curl_fetch_memory(u)$content)
-  detect_enc_url("https://www.corriere.it")
-  detect_enc_url("https://www.vk.com")
-  detect_enc_url("https://www.qq.com")
-  detect_enc_url("https://kakaku.com")
-  detect_enc_url("https://etoland.co.kr")
+  detect_url_enc <- function(u) detect_raw_enc(curl_fetch_memory(u)$content)
+  detect_url_enc("https://www.corriere.it")
+  detect_url_enc("https://www.vk.com")
+  detect_url_enc("https://www.qq.com")
+  detect_url_enc("https://kakaku.com")
+  detect_url_enc("https://etoland.co.kr")
 }
 }
 }

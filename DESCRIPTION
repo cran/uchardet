@@ -6,7 +6,7 @@ Description: R bindings of the 'uchardet', encoding detector library from Mozill
   of bytes in an unknown character encoding and without any additional
   information, and attempts to get the encoding of the text. All return names of
   the encodings are iconv-compatible.
-Version: 1.0.5
+Version: 1.0.6
 Authors@R: c(
   person(given = "Artem",
          family = "Klevtsov",
@@ -23,7 +23,7 @@ Copyright: file COPYRIGHTS
 URL: https://artemklevtsov.gitlab.io/uchardet,
         https://gitlab.com/artemklevtsov
 BugReports: https://gitlab.com/artemklevtsov/uchardet/issues
-Depends: R (>= 3.5.0)
+Depends: R (>= 3.1.0)
 Imports: Rcpp
 Suggests: tinytest, knitr, rmarkdown, curl
 LinkingTo: Rcpp
@@ -31,11 +31,11 @@ SystemRequirements: C++11, GNU make
 NeedsCompilation: yes
 ByteCompile: yes
 Encoding: UTF-8
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 VignetteBuilder: knitr
-Packaged: 2020-03-01 10:11:38.139 UTC; unikum
+Packaged: 2020-04-23 15:52:52 UTC; unikum
 Author: Artem Klevtsov [aut, cre] (<https://orcid.org/0000-0003-0492-6647>),
   Philipp Upravitelev [ctb]
 Maintainer: Artem Klevtsov <a.a.klevtsov@gmail.com>
 Repository: CRAN
-Date/Publication: 2020-03-01 15:30:02 UTC
+Date/Publication: 2020-04-27 14:10:05 UTC

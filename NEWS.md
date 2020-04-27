@@ -1,3 +1,8 @@
+# uchardet 1.0.6
+
+* Fix failed examples within `donttest`.
+* Update upstream library version to 0.0.7.
+
 # uchardet 1.0.5
 
 * Fix linker flags wihch cause a error on the Solaris.
