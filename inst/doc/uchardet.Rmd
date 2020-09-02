@@ -16,23 +16,23 @@ knitr::opts_chunk$set(
 library(uchardet)
 ```
 
-`uchardet` library is the encoding detector library of Mozilla which takes a sequence of bytes in an unknown character encoding without any additional information, and attempts to determine the encoding of the text.
+`uchardet` library is the encoding detector, which takes a sequence of bytes in an unknown character encoding without any additional information, and attempts to determine the encoding of the text. Returned encoding names are iconv-compatible.
 
 `uchardet` package solves 3 types of tasks:
 
 - strings encoding detection (R character vector);
-- detection of the file encoding without importing it into working environment;
 - bytes encoding detection (R raw vector);
+- detection of the file encoding without importing it into working environment;
 
-The `uchardet` package includes demo files. You could get their paths with this command: 
+The `uchardet` package includes demo files. You could get their paths with this command:
 
 ```{r, eval=FALSE}
-system.file("examples", path, package = "uchardet")
+dir(system.file("examples", package = "uchardet"), recursive = TRUE, full.names = TRUE)
 ```
 
 ## Character encoding detection
 
-To detect encoding of the strings you should use `detect_str_enc()` function. It is vectorized and accepts the character vector. Missing values will be skipped. Also function keeps `names` attribute.
+To detect encoding of the strings you should use `detect_str_enc()` function. It is vectorized and accepts the character vector. Missing values will be skipped.
 
 Simple example. Detection of the ASII symbols:
 
@@ -44,15 +44,26 @@ All strings in R could be only in three encodings - `UTF-8`, `Latin1` and `nativ
 
 Due to this limitations if we want to test `detect_str_enc()` we should convert string with UTF-8 encoding into another encoding and then use the `detect_str_enc()`.
 
+Let's define function for reading demo file to UTF-8 string:
+
 ```{r}
-# get file path
-file <- system.file("examples", "zh/big5.txt", package = "uchardet")
-# create the file connection with the encoding
-con <- file(file, encoding = "BIG-5")
+read_char <- function(path, enc) {
+    # get file path
+  file <- system.file("examples", path, package = "uchardet")
+  # create the file connection with the encoding
+  con <- file(file, encoding = enc)
+  # close connection on exit
+  on.exit(close(con))
+  # read file content
+  paste(readLines(con, warn = FALSE), collapse = "\n")
+}
+```
+
+Detction of the UTF-8 character string.
+
+```{r}
 # read file into the working env
-zh_utf8 <- paste(readLines(con, warn = FALSE), collapse = "\n")
-# close connection
-close(con)
+zh_utf8 <- read_char("zh/big5.txt", "BIG-5")
 # print content
 print(zh_utf8)
 # check the encoding of the created object
@@ -85,10 +96,16 @@ Encoding(c(zh_utf8, zh_big5, zh_gb))
 
 Sometimes file can't be read as a string, for example, when it includes embedded nul (`\000`). In such cases it would be right to read the file as raw byte vector and detect encoding with `detect_raw_enc()` function.
 
+Detection of the ASII symbols from the byte vector:
+
+```{r}
+detect_raw_enc(charToRaw("Hello, useR!"))
+```
+
 Let's define the function for reading demo files as raw bytes vector:
 
 ```{r}
-read_bin <- function(path) {
+read_raw <- function(path) {
   # get file path
   file <- system.file("examples", path, package = "uchardet")
   # read file to raw vector
@@ -96,29 +113,23 @@ read_bin <- function(path) {
 }
 
 # print first 5 bytes
-read_bin("de/iso-8859-1.txt")[1:5]
-```
-
-Detection of the ASII symbols from the byte vector:
-
-```{r}
-detect_raw_enc(charToRaw("Hello, useR!"))
+read_raw("de/iso-8859-1.txt")[1:5]
 ```
 
 Unusual encodings (each file has it's own encoding) detection:
 
 ```{r}
-detect_raw_enc(read_bin("de/iso-8859-1.txt"))
-detect_raw_enc(read_bin("de/windows-1252.txt"))
-detect_raw_enc(read_bin("fr/utf-16.be"))
-detect_raw_enc(read_bin("zh/big5.txt"))
+detect_raw_enc(read_raw("de/iso-8859-1.txt"))
+detect_raw_enc(read_raw("de/windows-1252.txt"))
+detect_raw_enc(read_raw("fr/utf-16.be"))
+detect_raw_enc(read_raw("zh/big5.txt"))
 ```
 
 ## Files encoding detection
 
 Function `detect_file_enc()` will be helpful for detection files encoding without importing these files into the working environment. `detect_file_enc()` uses the sliding window with the 65536 bytes width, in result there is no need to import the entire file.
 
-Function is vectorized and accepts the character vector of file paths. Non existing files will be skipped and names of the files will be attached to output vector as `names` attribute.
+Function is vectorized and accepts the character vector of file paths. Non existing files will be skipped.
 
 ```{r warning = FALSE}
 # paths to examples files
@@ -139,32 +150,4 @@ cmp$lang <- toupper(cmp$lang)
 cmp$original <- toupper(cmp$original)
 cmp$uchardet <- res
 head(cmp, n = 15)
-```
-
-## C++ API
-
-You can use the `uchardet` package functions via Rcpp.
-
-```{Rcpp, eval = FALSE}
-// [[Rcpp::depends(uchardet)]]
-
-#include <Rcpp.h>
-#include <uchardet.h>
-
-using namespace Rcpp;
-
-// [[Rcpp::export]]
-StringVector test_string(StringVector x) {
-  return uchardet::detect_str_enc(x);
-}
-
-// [[Rcpp::export]]
-StringVector test_file(StringVector x) {
-  return uchardet::detect_file_enc(x);
-}
-
-// [[Rcpp::export]]
-StringVector test_raw(RawVector x) {
-  return uchardet::detect_raw_enc(x);
-}
 ```

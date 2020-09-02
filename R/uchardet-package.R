@@ -11,11 +11,14 @@
 #' @name uchardet
 #' @docType package
 #'
+#' @example man-roxygen/ex_detect_str.R
+#' @example man-roxygen/ex_detect_file.R
+#' @example man-roxygen/ex_detect_raw.R
+#'
 #' @references
 #'
 #' \code{uchardet} page: \url{https://www.freedesktop.org/wiki/Software/uchardet/}
 #'
-#' @useDynLib uchardet, .registration = TRUE
-#' @importFrom Rcpp sourceCpp
+#' @useDynLib uchardet, .registration = TRUE, .fixes = "Cpp_"
 #'
 "_PACKAGE"

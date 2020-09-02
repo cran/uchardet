@@ -3,5 +3,4 @@
 export(detect_file_enc)
 export(detect_raw_enc)
 export(detect_str_enc)
-importFrom(Rcpp,sourceCpp)
-useDynLib(uchardet, .registration = TRUE)
+useDynLib(uchardet, .registration = TRUE, .fixes = "Cpp_")

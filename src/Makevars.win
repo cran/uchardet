@@ -5,6 +5,10 @@ UCHARDET_LIB = $(UCHARDET_DIR)/libuchardet.a
 
 CXX_STD = CXX11
 
+ifneq "$(WIN)" "64"
+    CXXFLAGS = "${CXXFLAGS} -msse2 -mfpmath=sse"
+endif
+
 PKG_CPPFLAGS = -I"$(UCHARDET_DIR)"
 PKG_LIBS = $(UCHARDET_LIB)
 

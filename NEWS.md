@@ -1,3 +1,11 @@
+# uchardet 1.1.0
+
+- Update uchardet C++ library.
+* Rework C++ code: use the R C API directly instead Rcpp.
+* Remove names attributes from the results.
+* Fix tests on Windows i386.
+* Update documentation.
+
 # uchardet 1.0.6
 
 * Fix failed examples within `donttest`.
@@ -13,7 +21,7 @@
 
 # ucharder 1.0.3
 
-* SUse builtin uchardet library for the reproducible results.
+* Use builtin uchardet library for the reproducible results.
 
 # ucharder 1.0.2
 

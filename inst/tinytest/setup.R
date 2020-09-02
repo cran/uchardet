@@ -33,7 +33,7 @@ skip_os <- function() {
   win_i386 <- .Platform$OS.type == "windows" && .Platform$r_arch == "i386"
   # detect solaris
   sunos <- Sys.info()[["sysname"]] == "SunOS"
-  win_i386 || sunos
+  sunos
 }
 
 # read file to raw vector

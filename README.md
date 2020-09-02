@@ -90,18 +90,13 @@ detect_raw_enc(charToRaw(utf8))
 ascii_file <- tempfile()
 writeLines(ascii, ascii_file)
 detect_file_enc(ascii_file)
-#> /tmp/Rtmp9uhkaX/file131a598ce4d4 
-#>                          "ASCII"
+#> /tmp/RtmpLPr6Ds/file5cf9a735cf8d0 
+#>                           "ASCII"
 utf8_file <- tempfile()
 writeLines(utf8, utf8_file)
 detect_file_enc(utf8_file)
-#> /tmp/Rtmp9uhkaX/file131a4c730707 
-#>                          "UTF-8"
-
-# detect URL contents encoding
-detect_url_enc(c("https://www.w3.org/", "https://zh.wikipedia.org/"))
-#>       https://www.w3.org/ https://zh.wikipedia.org/ 
-#>                   "ASCII"                   "UTF-8"
+#> /tmp/RtmpLPr6Ds/file5cf9a7305c0f7 
+#>                           "UTF-8"
 ```
 
 ## Bug reports
