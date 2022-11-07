@@ -20,7 +20,7 @@ detect_str_enc <- function(x) {
 }
 
 #' @title
-#' String encoding detection
+#' File encoding detection
 #'
 #' @description
 #' This function tries to detect character encoding.

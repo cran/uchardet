@@ -42,16 +42,4 @@ detect_raw_enc(ru_bin)
 # china text as binary data
 zh_bin <- read_bin(file.path(ex_path, "zh", "utf-8.txt"))
 detect_raw_enc(zh_bin)
-
-# detect encoding of the web pages content
-\donttest{
-if (require("curl")) {
-  ucd_detect_url <- function(u) detect_raw_enc(curl_fetch_memory(u)$content)
-  ucd_detect_url("https://www.corriere.it")
-  ucd_detect_url("https://www.vk.com")
-  ucd_detect_url("https://www.qq.com")
-  ucd_detect_url("https://kakaku.com")
-  ucd_detect_url("https://etoland.co.kr")
-}
-}
 }

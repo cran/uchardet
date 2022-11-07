@@ -30,10 +30,10 @@ skip_enc <- function(enc) {
 # skip test on OS
 skip_os <- function() {
   # detect windows i386
-  win_i386 <- .Platform$OS.type == "windows" && .Platform$r_arch == "i386"
+  win_i386 <- .Platform$OS.type == "windows" && .Platform$r_arch == "i386" && getRversion() < "4.0.0"
   # detect solaris
   sunos <- Sys.info()[["sysname"]] == "SunOS"
-  sunos
+  sunos || win_i386
 }
 
 # read file to raw vector

@@ -14,7 +14,7 @@ detect_str_enc("Hello, useR!")
 
 ## -----------------------------------------------------------------------------
 read_char <- function(path, enc) {
-    # get file path
+  # get file path
   file <- system.file("examples", path, package = "uchardet")
   # create the file connection with the encoding
   con <- file(file, encoding = enc)

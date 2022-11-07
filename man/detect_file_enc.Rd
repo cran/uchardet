@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{detect_file_enc}
 \alias{detect_file_enc}
-\title{String encoding detection}
+\title{File encoding detection}
 \usage{
 detect_file_enc(x)
 }

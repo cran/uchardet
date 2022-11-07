@@ -5,12 +5,6 @@
 
 <!-- badges: start -->
 
-[![GitLab CI Build
-Status](https://gitlab.com/artemklevtsov/uchardet/badges/master/pipeline.svg)](https://gitlab.com/artemklevtsov/uchardet/pipelines)
-[![AppVeyor Build
-status](https://ci.appveyor.com/api/projects/status/46wct6f93lik6aie?svg=true)](https://ci.appveyor.com/project/artemklevtsov/uchardet)
-[![Codecov Code
-Coverage](https://codecov.io/gl/artemklevtsov/uchardet/branch/master/graph/badge.svg)](https://codecov.io/gl/artemklevtsov/uchardet)
 [![CRAN
 Status](http://www.r-pkg.org/badges/version/uchardet)](https://cran.r-project.org/package=uchardet)
 [![License: GPL
@@ -27,10 +21,10 @@ text and returns encoding names in the iconv-compatible format.
 
 Key features:
 
-  - process character vector;
-  - process raw vector;
-  - process files without load whole file to memory;
-  - process contents of a URLs;
+- process character vector;
+- process raw vector;
+- process files without load whole file to memory;
+- process contents of a URLs;
 
 ## Installation
 
@@ -90,13 +84,11 @@ detect_raw_enc(charToRaw(utf8))
 ascii_file <- tempfile()
 writeLines(ascii, ascii_file)
 detect_file_enc(ascii_file)
-#> /tmp/RtmpLPr6Ds/file5cf9a735cf8d0 
-#>                           "ASCII"
+#> [1] "ASCII"
 utf8_file <- tempfile()
 writeLines(utf8, utf8_file)
 detect_file_enc(utf8_file)
-#> /tmp/RtmpLPr6Ds/file5cf9a7305c0f7 
-#>                           "UTF-8"
+#> [1] "UTF-8"
 ```
 
 ## Bug reports
@@ -109,17 +101,18 @@ bug.report(package = "uchardet")
 
 Before reporting a bug or submitting an issue, please do the following:
 
-  - Make sure that you error or issue was not reported or discussed
-    earlier. Please, use the search;
-  - Check the news list of the current version. Some errors could be
-    caused by the package changes. It could be done with `news(package =
-    "uchardet", Version == packageVersion("uchardet"))` command;
-  - Make a minimal reproducible example of the code that consistently
-    causes the error;
-  - Make sure that the error occurs during the execution of a function
-    from the `uchardet` package, not from other packages;
-  - Try to reproduce the error with the last development version of the
-    package from the git repository.
+- Make sure that you error or issue was not reported or discussed
+  earlier. Please, use the search;
+- Check the news list of the current version. Some errors could be
+  caused by the package changes. It could be done with
+  `news(package = "uchardet", Version == packageVersion("uchardet"))`
+  command;
+- Make a minimal reproducible example of the code that consistently
+  causes the error;
+- Make sure that the error occurs during the execution of a function
+  from the `uchardet` package, not from other packages;
+- Try to reproduce the error with the last development version of the
+  package from the git repository.
 
 Please attach traceback() and sessionInfo() output to bug report. It may
 save a lot of time.
